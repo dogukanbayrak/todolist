@@ -1,21 +1,23 @@
-package com.dogukanbayrak.appcent.request;
+package com.dogukanbayrak.appcent.service;
 
-public class AddUserRequest {
+import com.dogukanbayrak.appcent.Entity.User;
+
+public class UserService {
 
     private String username;
     private String password;
 
-    public AddUserRequest() {
+    public UserService() {
     }
 
-    public AddUserRequest(String username, String password) {
+
+
+    public UserService(String username, String password) {
         this.username = username;
         this.password = password;
     }
 
-    public String getUsername() {
-        return username;
-    }
+    public String getUsername() { return username;   }
 
     public void setUsername(String username) {
         this.username = username;
@@ -29,3 +31,4 @@ public class AddUserRequest {
         this.password = password;
     }
 }
+

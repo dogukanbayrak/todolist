@@ -5,8 +5,8 @@ import com.dogukanbayrak.appcent.Entity.Todo;
 import com.dogukanbayrak.appcent.Entity.User;
 import com.dogukanbayrak.appcent.repository.TodoRepository;
 import com.dogukanbayrak.appcent.repository.UserRepository;
-import com.dogukanbayrak.appcent.request.AddTodoRequest;
-import com.dogukanbayrak.appcent.request.AddUserRequest;
+import com.dogukanbayrak.appcent.service.todoService;
+import com.dogukanbayrak.appcent.service.UserService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.NoSuchElementException;
@@ -29,18 +29,18 @@ public class UserController {
     }
 
     @PostMapping
-    public User addUser(@RequestBody AddUserRequest userRequest) {
+    public User addUser(@RequestBody UserService userService) {
         User user = new User();
-        user.setUsername(userRequest.getUsername());
-        user.setPassword(userRequest.getPassword());
+        user.setUsername(userService.getUsername());
+        user.setPassword(userService.getPassword());
         return userRepository.save(user);
     }
 
     @PostMapping("/{userId}/todos")
-    public void addTodo(@PathVariable Long userId, @RequestBody AddTodoRequest todoRequest){
+    public void addTodo(@PathVariable Long userId, @RequestBody todoService todoService){
         User user = userRepository.findById(userId).orElseThrow(() -> new NoSuchElementException());
         Todo todo = new Todo();
-        todo.setContent(todoRequest.getContent());
+        todo.setContent(todoService.getContent());
         user.getTodoList().add(todo);
         todoRepository.save(todo);
         userRepository.save(user);

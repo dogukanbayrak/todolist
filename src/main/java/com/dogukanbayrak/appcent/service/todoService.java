@@ -1,14 +1,14 @@
-package com.dogukanbayrak.appcent.request;
+package com.dogukanbayrak.appcent.service;
 
-public class AddTodoRequest {
+public class todoService {
 
     private String content;
 
 
-    public AddTodoRequest() {
+    public todoService() {
     }
 
-    public AddTodoRequest(String content) {
+    public todoService(String content) {
         this.content = content;
     }
 
